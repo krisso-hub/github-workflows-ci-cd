@@ -12,7 +12,7 @@ jobs:
           echo "I'm running on $RUNNER_OS"
 
   window-echo:
-    runs-on: window-latest
+    runs-on: windows-latest
     steps:
       - name: show OS
         shell: bash
