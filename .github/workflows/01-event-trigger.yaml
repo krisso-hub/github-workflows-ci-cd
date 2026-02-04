@@ -1,9 +1,13 @@
 name: 01 event trigger
-on: push
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0/5 * * * *"
 
 jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
       - name: display event trigger
-        run: echo "I will be triggerd by ${{ github.event_name}}"
+        run: echo "I will be triggerd by ${{ github.event_name}} event"
