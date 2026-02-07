@@ -1,0 +1,16 @@
+name: 04 Context
+on: push
+
+jobs:
+  echo-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display information
+        run: |
+          echo "Event name : ${{ github.event_name }}"
+          echo "Ref : ${{ github.ref }}"
+          echo "Sha : ${{ github.sha }}"
+          echo "Autor : ${{ github.actor }}"
+          echo "workflow : ${{ github.workflow }}"
+          echo "Run Id : ${{ github.run_id  }}"
+          echo "Run Number: ${{ github.run_number }}"

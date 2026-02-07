@@ -1,7 +1,6 @@
 name: 01 event trigger
 on:
   pull_request:
-  push:
   schedule:
     - cron: "0/5 * * * *"
   workflow_dispatch:
