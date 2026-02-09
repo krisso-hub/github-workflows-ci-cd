@@ -15,6 +15,7 @@ jobs:
 
   unit-test:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: Run Unit Test
         run: echo "Running unit test ......"
