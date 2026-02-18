@@ -1,0 +1,35 @@
+name: OIDC S3 Test
+
+on: push
+
+jobs:
+  test-aws-s3:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credential
+        uses: aws-actions/configure-aws-credentials@v4
+
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::183295426561:role/github-s3-action
+          role-session-name: github-s3-action
+
+      - name: Print Callere identity
+        run: aws sts get-caller-identity
+
+      - name: Create S3 Bucket
+
+        run: |
+          Bucket = "github-oidc_demo-${{ github.run_number }}"
+          echo "Creating bucket: $Bucket"
+          aws s3api create-bucket \
+          --bucket "$Bucket" \
+          --reegion us-east-1 \
+          --create-bucket-configuration LocationConstraint=us-east-1
