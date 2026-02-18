@@ -27,7 +27,8 @@ jobs:
       - name: Create S3 Bucket
 
         run: |
-          BUCKET="github-oidc_demo-${{ github.run_number }}"
+          BUCKET="github-oidc-demo-${{ github.run_number }}"
+          BUCKET_NAME="github-oidc-demo-${{ github.ref_name }}"
           echo "Creating bucket: $BUCKET"
           aws s3api create-bucket \
           --bucket "$BUCKET" \
@@ -35,3 +36,6 @@ jobs:
           --create-bucket-configuration LocationConstraint=us-east-1
 
            echo "Bucket $BUCKET created successfully."
+
+           echo " Create another bucket"
+           aws s3 mb s3://$BUCKET_NAME --region us-east-1
