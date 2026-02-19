@@ -5,11 +5,11 @@ FROM node:18-alpine AS build
 WORKDIR /app
 
 # Install dependencies
-COPY package*.json ./
+COPY /react-app/package*.json ./
 RUN npm install --frozen-lockfile
 
 # Copy source code and build
-COPY . .
+COPY react-app/ .
 RUN npm run build
 
 # Stage 2: Serve the app with Nginx
