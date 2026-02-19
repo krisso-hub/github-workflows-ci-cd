@@ -18,7 +18,7 @@ jobs:
           role-to-assume: arn:aws:iam::183295426561:role/github-s3-action # Replace with your IAM role ARN
           role-session-name: github-s3-action
           aws-region: us-east-1
-      - name: Save Temporary Credentials
+      - name: Save Temporary Credential
         run: |
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
